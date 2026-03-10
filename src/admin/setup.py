@@ -53,7 +53,7 @@ def setup_admin(app: FastAPI) -> Admin | None:
         app=app,
         engine=sync_engine,
         authentication_backend=get_admin_auth(),
-        title="StateMind_bot Admin",
+        title="Klar Admin",
         templates_dir=str(templates_path),
     )
 
@@ -83,5 +83,6 @@ def setup_admin(app: FastAPI) -> Admin | None:
 
     logger.info("ÐÐ´Ð¼Ð¸Ð½ÐºÐ° Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð°: %s", admin_url)
     return admin
+
 
 

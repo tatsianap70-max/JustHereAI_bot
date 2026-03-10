@@ -17,7 +17,7 @@ import uvicorn
 def main() -> None:
     """Ð—Ð°Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ñ‡ÐµÑ€ÐµÐ· uvicorn."""
     parser = argparse.ArgumentParser(
-        description="StateMind_bot â€” Telegram-Ð±Ð¾Ñ‚ Ð´Ð»Ñ AI-Ð³ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ð¸ ÐºÐ¾Ð½Ñ‚ÐµÐ½Ñ‚Ð°",
+        description="Klar â€” Telegram-Ð±Ð¾Ñ‚ Ð´Ð»Ñ AI-Ð³ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ð¸ ÐºÐ¾Ð½Ñ‚ÐµÐ½Ñ‚Ð°",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 ÐŸÑ€Ð¸Ð¼ÐµÑ€Ñ‹:
@@ -66,5 +66,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 
 

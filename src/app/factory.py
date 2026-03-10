@@ -62,7 +62,7 @@ def create_app() -> FastAPI:
 
     # Ð¡Ð¾Ð·Ð´Ð°Ñ‘Ð¼ FastAPI Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ
     app = FastAPI(
-        title="StateMind_bot",
+        title="Klar",
         description="Telegram-Ð±Ð¾Ñ‚ Ð´Ð»Ñ AI-Ð³ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ð¸",
         version="0.1.0",
         lifespan=lifespan,
@@ -100,5 +100,6 @@ def create_app() -> FastAPI:
     app.include_router(root_router)
 
     return app
+
 
 

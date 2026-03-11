@@ -67,6 +67,10 @@ sqlalchemy[asyncio]>=2.0.45,<3.0
 # Самый быстрый драйвер для PostgreSQL в Python.
 asyncpg>=0.30.0
 
+# psycopg2-binary — синхронный драйвер PostgreSQL.
+# Нужен SQLAdmin для sync engine (create_engine) в административном интерфейсе.
+psycopg2-binary>=2.9.9
+
 # aiosqlite — асинхронный драйвер для SQLite.
 # Используется как на проде, так и в разработке.
 # SQLite может быть fallback-решением или использоваться для локальных кэшей.

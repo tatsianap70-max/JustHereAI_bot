@@ -25,6 +25,11 @@ from src.utils.logging import get_logger
 logger = get_logger(__name__)
 
 
+def _utc_now_naive() -> datetime:
+    """Текущее UTC-время без tzinfo для полей БД TIMESTAMP WITHOUT TIME ZONE."""
+    return datetime.now(UTC).replace(tzinfo=None)
+
+
 class GenerationRepository:
     """Репозиторий для работы с генерациями AI.
 
@@ -156,7 +161,11 @@ class GenerationRepository:
 
         # Обновляем статус и время завершения
         generation.status = status
-        generation.completed_at = completed_at or datetime.now(UTC)
+
+        completed_value = completed_at or _utc_now_naive()
+        if completed_value.tzinfo is not None:
+            completed_value = completed_value.replace(tzinfo=None)
+        generation.completed_at = completed_value
 
         # Обновляем метрики стоимости если переданы
         if tokens_charged is not None:
@@ -356,7 +365,7 @@ class GenerationRepository:
             logger.info(f"Очищено зависших генераций: {cleaned}")
         """
         # Вычисляем пороговое время: now - timeout
-        threshold_time = datetime.now(UTC) - timedelta(seconds=timeout_seconds)
+        threshold_time = _utc_now_naive() - timedelta(seconds=timeout_seconds)
 
         # Находим все PENDING генерации старше порогового времени
         stmt = select(Generation).where(
@@ -372,7 +381,7 @@ class GenerationRepository:
             return 0
 
         # Помечаем все как FAILED
-        now = datetime.now(UTC)
+        now = _utc_now_naive()
         for generation in stuck_generations:
             generation.status = GenerationDBStatus.FAILED
             generation.completed_at = now

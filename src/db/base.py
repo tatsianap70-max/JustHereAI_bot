@@ -83,7 +83,32 @@ def _get_database_url() -> str:
     """
     settings = _get_settings()
     if settings.database.postgres_url:
-        return settings.database.postgres_url
+        postgres_url = settings.database.postgres_url
+
+        # Нормализуем URL для async engine:
+        # - postgres:// -> postgresql://
+        # - postgresql:// -> postgresql+asyncpg://
+        # - postgresql+psycopg2:// -> postgresql+asyncpg://
+        if postgres_url.startswith("postgres://"):
+            postgres_url = postgres_url.replace(
+                "postgres://",
+                "postgresql://",
+                1,
+            )
+        if postgres_url.startswith("postgresql+psycopg2://"):
+            postgres_url = postgres_url.replace(
+                "postgresql+psycopg2://",
+                "postgresql+asyncpg://",
+                1,
+            )
+        elif postgres_url.startswith("postgresql://"):
+            postgres_url = postgres_url.replace(
+                "postgresql://",
+                "postgresql+asyncpg://",
+                1,
+            )
+
+        return postgres_url
 
     # По умолчанию — SQLite
     # aiosqlite — асинхронный драйвер для SQLite

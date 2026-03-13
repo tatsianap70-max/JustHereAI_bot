@@ -209,7 +209,7 @@ exclude = [
 #   DTZ — flake8-datetimez (безопасная работа с датами)
 #         DTZ001: datetime.now() без timezone — опасно!
 #         DTZ002: datetime.today() без timezone — опасно!
-#         DTZ003: datetime.utcnow() — deprecated, используй datetime.now(UTC)
+#         DTZ003: datetime.utcnow(timezone.utc) — deprecated, используй datetime.now(UTC)
 #         DTZ005: datetime.now() — всегда указывай tz=
 #         Timezone-naive даты — источник багов в production!
 #

@@ -19,7 +19,7 @@ API документация: https://yookassa.ru/developers/api
 """
 
 import uuid
-from datetime import UTC, datetime
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from typing import Any
 

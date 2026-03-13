@@ -8,7 +8,7 @@
 """
 
 from collections.abc import AsyncIterator
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from sqlalchemy import func, select
@@ -485,9 +485,9 @@ class UserRepository:
         Returns:
             Обновлённый объект User.
         """
-        from datetime import UTC, datetime
+        from datetime import datetime, timedelta, timezone
 
-        user.terms_accepted_at = datetime.now(UTC)
+        user.terms_accepted_at = datetime.now(timezone.utc)
         user.accepted_legal_version = version
         await self._session.commit()
         await self._session.refresh(user)

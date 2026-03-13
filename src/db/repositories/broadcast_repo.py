@@ -13,7 +13,7 @@
 4. После завершения статус меняется на COMPLETED
 """
 
-from datetime import UTC, datetime
+from datetime import datetime, timedelta, timezone
 
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession

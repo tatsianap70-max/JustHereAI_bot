@@ -48,7 +48,7 @@ Example:
     )
 """
 
-from datetime import UTC, datetime
+from datetime import timezone, datetime, timedelta
 
 from src.config.yaml_config import YamlConfig
 from src.core.exceptions import CooldownError, TooManyGenerationsError
@@ -130,7 +130,7 @@ async def check_generation_cooldown(
     # Проверяем прошедшее время
     # Нормализуем datetime из БД как UTC (SQLite/PostgreSQL возвращают naive datetime)
     created_at_utc = ensure_utc_aware(last_generation.created_at)
-    elapsed_seconds = (datetime.now(UTC) - created_at_utc).total_seconds()
+    elapsed_seconds = (datetime.now(timezone.utc) - created_at_utc).total_seconds()
 
     if elapsed_seconds < cooldown_seconds:
         seconds_left = int(cooldown_seconds - elapsed_seconds) + 1

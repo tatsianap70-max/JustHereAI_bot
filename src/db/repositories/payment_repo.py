@@ -10,7 +10,7 @@
 - Получение истории платежей пользователя
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 
 from sqlalchemy import select

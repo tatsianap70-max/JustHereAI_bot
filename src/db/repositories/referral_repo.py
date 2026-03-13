@@ -7,7 +7,7 @@
 - Обновление статуса выплаты бонуса
 """
 
-from datetime import UTC, datetime
+from datetime import datetime, timedelta, timezone
 
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession

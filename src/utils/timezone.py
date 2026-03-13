@@ -8,7 +8,7 @@
 3. Часовой пояс задаётся через LOGGING__TIMEZONE в настройках
 """
 
-from datetime import UTC, datetime
+from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 
@@ -17,7 +17,7 @@ def get_timezone(timezone_name: str) -> ZoneInfo:
 
     Args:
         timezone_name: Название часового пояса из базы IANA.
-            Примеры: "Europe/Moscow", "UTC", "America/New_York".
+            Примеры: "Europe/Moscow", "timezone.utc", "America/New_York".
 
     Returns:
         Объект ZoneInfo для указанного часового пояса.
@@ -80,7 +80,7 @@ def ensure_utc_aware(dt: datetime) -> datetime:
         Время с timezone=UTC.
 
     Example:
-        >>> from datetime import datetime, UTC
+        >>> from datetime import datetime, timedelta, timezone
         >>> naive_dt = datetime(2024, 1, 1, 12, 0, 0)  # Из БД
         >>> aware_dt = ensure_utc_aware(naive_dt)
         >>> aware_dt.tzinfo

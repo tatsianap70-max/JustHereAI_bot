@@ -14,7 +14,7 @@ import queue
 import sys
 import threading
 import traceback
-from datetime import UTC, datetime
+from datetime import datetime, timedelta, timezone
 from logging.handlers import RotatingFileHandler
 from typing import TYPE_CHECKING
 

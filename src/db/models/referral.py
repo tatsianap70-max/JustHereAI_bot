@@ -13,7 +13,7 @@
 4. Обоим начисляются бонусы (если условия соблюдены)
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import TYPE_CHECKING
 
 from sqlalchemy import BigInteger, DateTime, ForeignKey, Index, func, text

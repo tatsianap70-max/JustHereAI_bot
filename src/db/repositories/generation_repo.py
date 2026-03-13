@@ -13,7 +13,7 @@
 - Аудита и аналитики (история всех генераций сохраняется)
 """
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone 
 from decimal import Decimal
 
 from sqlalchemy import desc, func, select
@@ -381,7 +381,7 @@ class GenerationRepository:
             return 0
 
         # Помечаем все как FAILED
-        now = _utc_now_naive()
+        now = datetime.now(timezone.utc)
         for generation in stuck_generations:
             generation.status = GenerationDBStatus.FAILED
             generation.completed_at = now

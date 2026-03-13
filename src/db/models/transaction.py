@@ -17,7 +17,7 @@
 и вычисляется как сумма всех транзакций (для проверки целостности).
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from enum import StrEnum
 from typing import TYPE_CHECKING
 

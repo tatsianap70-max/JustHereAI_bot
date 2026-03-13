@@ -548,7 +548,7 @@ def mock_subscription_stars() -> MagicMock:
 @pytest.fixture
 def mock_subscription_yookassa() -> MagicMock:
     """Мок активной подписки YooKassa (не Stars)."""
-    from datetime import datetime, timedelta
+    from datetime import timezone, datetime, timedelta
 
     from src.db.models.subscription import Subscription
 
@@ -559,7 +559,7 @@ def mock_subscription_yookassa() -> MagicMock:
     subscription.status = SubscriptionStatus.ACTIVE
     subscription.auto_renewal = True
     subscription.cancel_at_period_end = False
-    subscription.period_end = datetime.now() + timedelta(days=25)
+    subscription.period_end = datetime.now(timezone.uts) + timedelta(days=25)
     return subscription
 
 

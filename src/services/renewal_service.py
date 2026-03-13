@@ -18,7 +18,7 @@
 
 import json
 from dataclasses import dataclass
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from enum import Enum
 
@@ -378,7 +378,7 @@ class RenewalService:
             payment_id: ID платежа за продление.
         """
         # Рассчитываем новый период
-        now = datetime.now(UTC)
+        now = datetime.now(timezone.utc)
         # Новый период начинается с момента окончания текущего
         # или с текущего момента, если подписка уже просрочена
         new_period_start = max(subscription.period_end, now)

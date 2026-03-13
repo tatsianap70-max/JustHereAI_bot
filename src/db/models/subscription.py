@@ -16,7 +16,7 @@
 5. EXPIRED — истекла и не была продлена
 """
 
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from enum import StrEnum
 from typing import TYPE_CHECKING
 

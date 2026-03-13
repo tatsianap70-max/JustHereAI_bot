@@ -37,7 +37,7 @@
 
 import json
 from dataclasses import dataclass
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -258,7 +258,7 @@ class SubscriptionService:
             )
 
         # Определяем период
-        now = datetime.now(UTC)
+        now = datetime.now(timezone.utc)
         if period_start is None:
             period_start = now
         if period_end is None:
@@ -420,7 +420,7 @@ class SubscriptionService:
                 )
 
         # Рассчитываем новый период
-        now = datetime.now(UTC)
+        now = datetime.now(timezone.utc)
         period_days = tariff.period_days if tariff else 30
         new_period_start = now
         new_period_end = now + timedelta(days=period_days)

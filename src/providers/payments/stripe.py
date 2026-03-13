@@ -21,7 +21,7 @@ API документация: https://stripe.com/docs/api
 import hashlib
 import hmac
 import time
-from datetime import UTC, datetime
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from typing import Any
 

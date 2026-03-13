@@ -10,7 +10,7 @@
     - Пользователь: "А что ты умеешь?" <- AI видит весь предыдущий контекст
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import TYPE_CHECKING
 
 from sqlalchemy import BigInteger, ForeignKey, Text, func

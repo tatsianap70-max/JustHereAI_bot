@@ -23,7 +23,7 @@
 
 import json
 from dataclasses import dataclass
-from datetime import UTC, datetime, timedelta
+from datetime import timezone, datetime, timedelta
 from decimal import Decimal
 from typing import Any
 
@@ -568,7 +568,7 @@ class PaymentService:
         # Проверяем существующую подписку
         existing = await self._subscription_repo.get_active_subscription(user.id)
 
-        now = datetime.now(UTC)
+        now = datetime.now(timezone.utc)
         period_days = tariff.period_days
         tokens_per_period = tariff.tokens_per_period
 

@@ -5,7 +5,7 @@
 связаны с пользователем.
 """
 
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from typing import TYPE_CHECKING
 
 from sqlalchemy import BigInteger, DateTime, String, func

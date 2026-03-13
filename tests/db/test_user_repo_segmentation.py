@@ -16,7 +16,7 @@
 7. Комбинации фильтров
 """
 
-from datetime import UTC, datetime
+from datetime import datetime, timedelta, timezone
 
 import pytest
 from sqlalchemy.ext.asyncio import AsyncSession

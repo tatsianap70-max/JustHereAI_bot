@@ -24,7 +24,7 @@ Telegram Stars — встроенная валюта Telegram для оплат�
 
 import json
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from typing import Any
 

@@ -41,7 +41,7 @@
 import asyncio
 import contextlib
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import TYPE_CHECKING, Protocol
 
 from aiogram import Bot

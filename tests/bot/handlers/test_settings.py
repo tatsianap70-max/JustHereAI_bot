@@ -530,7 +530,7 @@ def mock_bot() -> MagicMock:
 @pytest.fixture
 def mock_subscription_stars() -> MagicMock:
     """Мок активной подписки Telegram Stars."""
-    from datetime import datetime, timedelta
+    from datetime import datetime, timedelta, timezone
 
     from src.db.models.subscription import Subscription
 
@@ -541,7 +541,7 @@ def mock_subscription_stars() -> MagicMock:
     subscription.status = SubscriptionStatus.ACTIVE
     subscription.auto_renewal = True
     subscription.cancel_at_period_end = False
-    subscription.period_end = datetime.now() + timedelta(days=25)
+    subscription.period_end = datetime.now(timezone.utc) + timedelta(days=25)
     return subscription
 
 
